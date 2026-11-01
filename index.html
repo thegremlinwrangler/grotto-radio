@@ -19,7 +19,7 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .layer.small-display{z-index:4}
 .layer.badge{z-index:5}
 .layer.emblem{z-index:5}
-.screen-main{position:absolute;z-index:2;left:22%;top:23%;width:56%;height:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2% 4%;color:#34251a;overflow:hidden}
+.screen-main{position:absolute;z-index:2;left:22%;top:25%;width:56%;height:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2% 4%;color:#34251a;overflow:hidden}
 .screen-main .eyebrow{font:700 clamp(8px,1vw,12px)/1.2 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#80603a}
 .screen-main .song{font:bold clamp(14px,2.4vw,28px)/1.1 Georgia,serif;margin:5px 0 3px;max-width:100%}
 .screen-main .album{font:clamp(9px,1.15vw,14px)/1.25 Arial,sans-serif;color:#705638}
@@ -35,7 +35,7 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .badge-link{position:absolute;z-index:12;display:block;background:transparent;border-radius:50%;cursor:pointer}
 .badge-link.spotify{left:75.8%;top:65.9%;width:6.5%;height:9.2%}
 .badge-link.gremtv{left:16.2%;top:65.7%;width:6.5%;height:9.2%}
-.explicit-control{position:absolute;z-index:15;left:50%;top:54%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #8b6738;border-radius:20px;background:#21170ee8;color:#f1d49d;font:700 clamp(8px,.9vw,11px) Arial,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 2px 6px #0008}
+.explicit-control{position:absolute;z-index:15;left:43%;top:57.2%;display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #8b6738;border-radius:20px;background:#21170ee8;color:#f1d49d;font:700 clamp(8px,.9vw,11px) Arial,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 2px 6px #0008}
 .led{width:10px;height:10px;border-radius:50%;background:#4b4b42;border:1px solid #a18c68;box-shadow:inset 0 0 3px #000}
 .explicit-control[aria-pressed="true"] .led{background:#ffb52e;box-shadow:0 0 5px #ffb52e,0 0 12px #ff9d22}
 .below{max-width:940px;margin:8px auto 0}
@@ -49,7 +49,7 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .catalogue{margin:26px auto 0;max-width:1000px}
 .catalogue h2{font-size:25px;color:#e5c17e;text-align:center;margin:0 0 5px}
 .catalogue .sub{text-align:center;color:#b9a78b;font:13px Arial,sans-serif;margin:0 0 16px}
-.track-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.track-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .track{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center;background:linear-gradient(135deg,#34261b,#1e1711);border:1px solid #60492f;border-radius:10px;padding:9px;min-width:0}
 .track.locked{filter:grayscale(1);opacity:.55}
 .track img{width:74px;height:74px;object-fit:cover;border-radius:6px;background:#493a2a}
@@ -66,7 +66,7 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .modal p{color:#e5d2b1;margin:0 0 18px}
 .modal .choices{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .footer{text-align:center;color:#8f8069;font:11px Arial,sans-serif;margin:25px 0 0}
-@media(max-width:850px){.track-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}\n@media(max-width:600px){body{padding:12px 8px 30px}.screen-main .song{font-size:clamp(12px,3vw,20px)}.screen-main .status{margin-top:3px}.explicit-control{padding:3px 6px;gap:4px}.led{width:7px;height:7px}.track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.track{grid-template-columns:55px 1fr;gap:7px;padding:7px}.track img{width:55px;height:55px}.track .name{font-size:12px}}
+@media(max-width:600px){body{padding:12px 8px 30px}.screen-main .song{font-size:clamp(12px,3vw,20px)}.screen-main .status{margin-top:3px}.explicit-control{padding:3px 6px;gap:4px}.led{width:7px;height:7px}.track-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}.track{grid-template-columns:55px 1fr;gap:7px;padding:7px}.track img{width:55px;height:55px}.track .name{font-size:12px}}
 </style>
 </head>
 <body>
@@ -131,7 +131,593 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 </div>
 
 <script>
-const TRACKS = [{"id":"track-2","releaseDate":"2026-12-01","album":"Christmas With the Gremlins","title":"December is Here","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikapEiTbKcs1L_aO3ntlV1_zaSYTy8D-f74HCjFm0j1ftbhZ8AcXR_bHwH-lE0KTRUic4m9DwSHA2mNZb1cHTXCoJ6F6Gb_IODLyiqxyeXzY5tuJmlb6Nfw8LWzRpQWETMB82HtMZnLWXkd-HJk7ROe_q1TD6CnMOn3sDIaZliQUKxa3N-8aJ3ftZP8eQ/s3000/December%20is%20Here.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783004290/December_is_Here_gx275s.mp3","gremtv":"https://gremtv.blogspot.com/2026/11/december-is-here.html","explicit":false,"row":2,"songId":"track-2","songTitle":"December is Here"},{"id":"track-3","releaseDate":"2026-12-02","album":"Christmas With the Gremlins","title":"Gremlin Elf on the Shelf","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEievzmXHbIRWrBvg7u6G6uRWsxBy2ZQ6OdMMf3V-MAEIeUHjeMc62aoS6hWOc47HQ7eYRFOv505XRuckeWDrmfAiju7MY8C__cwjt-F-rLlYtfXzQrK1a4RlEiBhzD_PvBHQR3MfdXU68uoLy1v2fjJ91XNH-j5Hmkfnk8hsYG2foLETA/s1600/EOTS%20single%20cover.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783013193/Gremlin_Elf_on_the_Jingle_fbylpl.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/elf-on-shelf-jingle.html","explicit":false,"row":3,"songId":"track-3","songTitle":"Gremlin Elf on the Shelf"},{"id":"track-4","releaseDate":"2026-12-03","album":"God or Gremlin","title":"Christmas","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjzdxiYhCgqnRlL3P4WB0b_mcLuL6_X-BR9wwq-VEAyy6AkYlt5ssnJPSS-6N0SmNhTweDXbO8hTZq8QnzlpzhBnk8DsONn8DGRQ2jIv4unBx3tuxgbiG4IkgrJVkeaTWI5pD2qvjNAQcB8I8U1B7182W3va21Gb7FoTJtDmGHXvde9AQz8xEHzE4eHLc/s790/God%20Or%20Gremlin%20December%20Mix%20Tape.PNG","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1775989365/God_Or_Gremlin__Christmas_Edition_j5t9ui.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/GOGXmas.html","explicit":false,"row":4,"songId":"track-4","songTitle":"Christmas"},{"id":"track-5","releaseDate":"2026-12-04","album":"God or Gremlin","title":"Decor","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwM8bx1tX-eS3EI9OAbXCQIoqQ-QK0q3VhHmlPlTWgJdJ8UxSN4708PTnNx35xlZS8ZUySggLZsewjwd8Cenkg-RSFRhEzGLAV0-U3pAgluTOgkCCYc6h_hcmw8RSvTciOWkJyR5mgR_8wtuqbosVMLKTJzJBLt_KwLIgnH2IM3GmT1g/s1600/Holiday%20decor%20showdown_%20perfect%20vs%20chaotic.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776006263/God_Or_Gremlin__Decor_Edition_arsrlo.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-decor-edition.html","explicit":false,"row":5,"songId":"track-5","songTitle":"Decor"},{"id":"track-6","releaseDate":"2026-12-05","album":"God or Gremlin","title":"The Tree","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP7gT2oqL6yDQbdV71VmJ6j5_XOrGNT0wO39kNWDH0dnWjy4JYNG6XqofsxbRw1IuiAH_A7Q-OGSe-Y_BhoBXKMITL4lhdYdWsaA2bXywi9081cWgCyyUD2KtQn3_SSW_037gbViLQiOduIAhsu2-wfZKSMKAoBXXYMjjWacOnabmBYA/s1600/God%20or%20gremlin_%20Holiday%20tree%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1775980780/God_or_Gremlin__Tree_Decorating_kxkmlo.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-tree-edition.html","explicit":false,"row":6,"songId":"track-6","songTitle":"The Tree"},{"id":"track-7","releaseDate":"2026-12-06","album":"God or Gremlin","title":"Elf on the Shelf","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSAVDMcNPoYJOmeZ8EajRxARCTa6QeoIL9-jP9SWMMsjerlZLywoW4_Q5wxHUEWIiMYVIUvIqss8tlQiYL1XXPvvj7vWzSUxlteHgh8nGWQcVZOATgIv9aYRUqQh3I_t5OSXo2NCH4HkFtHIXWiU5zLi4uyGYjhl2UevXMTeTWjIAyWQ/s1600/Good%20elf%20vs%20gremlin%20chaos.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776003369/God_Or_Gremlin__Elf_on_the_Shelf_1_acrgrv.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-elf-on-shelf-edition.html","explicit":false,"row":7,"songId":"track-7","songTitle":"Elf on the Shelf"},{"id":"track-8","releaseDate":"2026-12-07","album":"God or Gremlin","title":"Gift Buying","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSjEu1VSl25LK6KXH8niwggyLMj4zVLAZnvUCNzpx-QRQqzOPa44lrVZlXRlrjzHzuxrNuQmd82e_1GbMaxjLn4AOgMlpyYpkhDLJD6KXkZ7SdhJTtCD2tgaazu8b58FPvT-0StpS_O9xDgNT7uchtwXyWqNP4Hfk-8uTbV5lKQJpHSg/s1600/God%20vs%20gremlin_%20the%20holiday%20shopping%20battle.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1775997926/God_or_Gremlin_gift_buying_edition_fvrbzv.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-buying.html","explicit":false,"row":8,"songId":"track-8","songTitle":"Gift Buying"},{"id":"track-9","releaseDate":"2026-12-08","album":"God or Gremlin","title":"Gift Squirrelling","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAal9q3enNO7vYLYVx3xhvQf-TGkH88t38gP6Z5M8bZVx29F1R40Z2jyMnBK9pcF50R5z8EA2EwjHcYfwWjuSx_y5s2_rrFUeceDwzk6FY3PykUlfBNhXpx4jPWqhUFQCqz16clJgPFXHKgC0EsROAT9vtIeBREanaYDfVpCMy8dOhQ/s1600/God%20vs%20Gremlin_%20Christmas%20chaos%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776036685/God_Or_Gremlin__Gift_Squirreller_Edition_n5do0l.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-squirreller-edition.html","explicit":false,"row":9,"songId":"track-9","songTitle":"Gift Squirrelling"},{"id":"track-10","releaseDate":"2026-12-09","album":"Christmas With the Gremlins","title":"Christmas Card Confusion","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDYebyu3cHz1pzw28ZSEExZ2dls7dHrwyi0pUIdDWlzhntdS1jT32jbgDdyner0xFl8Zlk8vJ-CkWrvJe-i3GDsvU1Iabs7S_5c1nechrnqzikxEBVbMix4IkKN7mocgSTniRMjSXXCAIM6ug4jBM10E7MaYedDAziyTU4ReCFlIPU6YToLmUi1lwhGoM/s320/Christmas%20Card%20Confusion%202%20a.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783520506/Christmas_Card_Confusion_kby35b.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/christmas-card-confusion.html","explicit":false,"row":10,"songId":"track-10","songTitle":"Christmas Card Confusion"},{"id":"track-11","releaseDate":"2026-12-10","album":"God or Gremlin","title":"Gift Wrapping","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHpMhxxf_hsIeceRUccTy_HHxRe0kQ7qBiJj-nyEr4SuJwIy01rpNXF1kjLke7kta75X14qBZnuHlhlTTjJit5Na7PtKOzfQlpy9u6nQbIUAhVAyqaGUEySrEwIitisOaiYxiuENzb6awSuqLCNBTYBb-a9iGiirmQe3OPl850jXaFgg/s1600/God%20or%20gremlin_%20holiday%20wrapping%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776038582/Gift_Wrap_God_or_Gremlin__zmupgz.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-wrapping.html","explicit":false,"row":11,"songId":"track-11","songTitle":"Gift Wrapping"},{"id":"track-12","releaseDate":"2026-12-11","album":"God or Gremlin","title":"Gift Hiding","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhki5E-LuCWC_NeDq-LBDCIpVwULHEowlYy1PZN6ZF3LcX1W5j1ovxUUBoJJqDojtVHlF1gtnv7a51ecohLVFWwQq86zcICim4oUGlrKwpzGHu35NWGu1xvgqTDelIjEoVGHkj14pUTG8ZK7KTOhLh64H4dgwx7vcscV29hPzG1HgBruA/s1600/God%20vs%20gremlin_%20gift%20hiding%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776039734/God_Or_Gremlin__Gift_Hiders_Edition_fk0wzl.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-hiders-edition.html","explicit":false,"row":12,"songId":"track-12","songTitle":"Gift Hiding"},{"id":"track-13","releaseDate":"2026-12-12","album":"God or Gremlin","title":"Gift Seeking","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWpeIvpa-jW_wo9gm5lSsYrHz-QfeyM1CJjGqDKIvBG5e1n-OPrdxlQHMjcopVZmzUfoVjSSumWZ-Ksp12C1nC6IXA8OUjO-Bz2ew2x_0bAY-NzVwU5i3BMuDRsNPi3PsvPliQKeBNiTPpt7N2c7vUmnKipntSpMbeRjC2md461_7smw/s1600/God%20vs%20gremlins_%20holiday%20chaos%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776040754/God_Or_Gremlin__Gift_Seekers_Edition_cnwdik.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-seekers-edition.html","explicit":false,"row":13,"songId":"track-13","songTitle":"Gift Seeking"},{"id":"track-14","releaseDate":"2026-12-13","album":"God or Gremlin","title":"Gift Giving/Receiving","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0wNkKvlejAfOzvTls2b2ZyXSm99GExq_8rNhq2YC12jfYCXKWUenbCiZjVg4OEUXxd88A2EO2YxL3Vlcmc4jh2iLrOG3BulLt61AwRm7tvYG8cvb6Icq1vUH3mKYXDrPpttor2qTLTlJKLf1ryEAPnSS9TSswIu9whQZqSOVPPENoVw/s1600/God%20or%20Gremlin%20Gift%20Giving%20Edition.PNG","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776000264/God_Or_Gremlin__Gift_Giving_Receiving_Edition_corrected_1_r4t8r7.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-givingreceiving.html","explicit":false,"row":14,"songId":"track-14","songTitle":"Gift Giving/Receiving"},{"id":"track-15","releaseDate":"2026-12-14","album":"God or Gremlin","title":"Holiday Attire","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiHnzHxqy6MZgx8i1-MXWATG0V3NI-9Nfr5bm5_JAir4xxy-TvLK5WkqFQE5xKBCWMAuHU9p4XQA3hXOlPouSh2Xwko6-9hhXC-5QgaWUXVgBcyX6eu9S23sbMJ7SxqjnJSARGAJZltseNPkLuru-Ql5owz0Zw76zOA2uCIF9jQ3wKHQ/s1600/Holiday%20attire%20showdown_%20stylish%20vs%20chaotic.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776007717/God_Or_Gremlin__Holiday_Attire_Edition_wcdsu1.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-holiday-attire-edition.html","explicit":false,"row":15,"songId":"track-15","songTitle":"Holiday Attire"},{"id":"track-16","releaseDate":"2026-12-15","album":"God or Gremlin","title":"Hosting (Holiday Spirit(tm))","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSBIgSz3upKbd_07wkunow1Xzbj7ujVKCW_hY2VHQy9q5KqM5bgaHj_91LNp3m2PUEJqg4ABG8XWHHq3PzchXEsCG1DfpTEH1cN8b0one8wZCZXnySBQKgo6j51F9bmONC2YkThp_75dxPPQ5haQpmaakeB4apsYqd9P9wRpMeOWMrAA/s1600/God%20or%20Gremlin_%20Holiday%20chaos%20unfolds.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776033922/God_Or_Gremlin__Hosting_Holiday_Spirit_Edition_oxar1d.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-hosting-holiday-spirit.html","explicit":false,"row":16,"songId":"track-16","songTitle":"Hosting (Holiday Spirit(tm))"},{"id":"track-17","releaseDate":"2026-12-16","album":"Christmas With the Gremlins","title":"Secret Santa Shambles","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizKj07U6Ygj1GOUTSzBXpKtfsxW5BdoXLzerg972lbldb65J7V1494EkLQIgXQk6Hw0qQ_9P7kKEnHmMg4-VHKNr2WYNNCLUSKdp9z2V2jw-74AAFwuSZJ-_izrEA8jeqdTk55hG95N6sUVLSsI2p9Cr5tzF2lpNIV0E13WZzVhck06jRVBtTJWWWdi-M/s320/Secret%20Santa%20Shambles.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785003369/Secret_Santa_Shambles_-_Operetta_yphqkv.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/secret-santa-shambles.html","explicit":false,"row":17,"songId":"track-17","songTitle":"Secret Santa Shambles"},{"id":"track-18","releaseDate":"2026-12-17","album":"God or Gremlin","title":"Christmas Baking","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrwKcI0yfDmvXbcZHEkKqibhY_-TwvnbQZFMvz9LlXqpFR6jsYtzN_u03Zz2Oq2howd8FMQTz_KhzR22enitcpDwDz0Ba0DgDyERY5aPvSGp4A8-g9L8ixEbwEf_JTjBupUE8IqcwPlq30julQ4_9G-e5pZ2KO15IOKD0-d9-Tl7sm3A/s1600/Holiday%20baking_%20angelic%20vs%20chaotic%20fun.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776028580/God_Or_Gremlin__Holiday_Baking_Edition_nrkgnd.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-holiday-baking-edition.html","explicit":false,"row":18,"songId":"track-18","songTitle":"Christmas Baking"},{"id":"track-19","releaseDate":"2026-12-18","album":"God or Gremlin","title":"Christmas Dinner","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTtmDBlPTrxmosrNYTjTQGoh5bi7CcKUecGIXh4r__LduMuVu97rMkidIB7xkreeWJlEQuHaNB_Wu4mDStkVO0JzXCzzGHhBxluYDkkrfK8jETKdXUpOaLOUQH2xZ8_uUyLmfddwQQsyZmXNzOhiTgTAqI5JwGYttUghn66GW42v-tpU9zAmlYrr2Wyp0/s1254/Holiday%20dinner_%20god%20vs%20gremlin%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1775979941/God_or_Gremlin__Dinner_gcvlpa.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-dinner-edition.html","explicit":false,"row":19,"songId":"track-19","songTitle":"Christmas Dinner"},{"id":"track-20","releaseDate":"2026-12-19","album":"Christmas With the Gremlins","title":"Ugly Christmas Sweater Day","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXoQPWOmhNB88s3UJ6jMar08rTShkxPCvNqwmHoa5aVER8MSiLOHITTmmGVosMbTz2NM8ot4HIvYpzxsPpDmU36lE3MOsbVAKIIFxUx-oz98htFunUWgyhUcrmCnYjDPqm9S6g1EaZiddoHirajHWO_p7rBBciLzeUhvdiTDHCTn4TkyV5BnKri1mN0Tg/s320/Ugly%20Christmas%20Sweater%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785497877/Ugly_Sweater_Day_The_Official_Origin_Story_rotjuv.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/ugly-christmas-sweater-official-origin.html","explicit":false,"row":20,"songId":"track-20","songTitle":"Ugly Christmas Sweater Day"},{"id":"track-21","releaseDate":"2026-12-20","album":"God or Gremlin","title":"Christmas Music","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZM_MqdmigMQDywkuBHnkQCXUoKi53jYQVnczZFNO8pyKYSJ6N3V4AMNCe-hHIURQkr6Y9MvkImmWuCVfcKZMjQxt3HeWMZeUOMN0KHlxaKcvQZQUlacIZ_i419vqEXoqDk3rLLbkLBlzfaS5UZfV7n3UWWvKF44cSCqGWnM53PtHETQ/s1600/God%20or%20Gremlin_%20Christmas%20music%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776037715/God_Or_Gremlin__Christmas_Music_Edition_zjaeja.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-music-edition.html","explicit":false,"row":21,"songId":"track-21","songTitle":"Christmas Music"},{"id":"track-22","releaseDate":"2026-12-21","album":"Christmas With the Gremlins","title":"Snowflake Stack","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimbnS9Q0pZeWgQwJLgvLYU7i2beLodf9XAWG2UaWMZzxiO09hXsHGeUWZ71f7p8ZPIvYnaVDDIfOzYvSDTcVX_BC4z_Jcne2jrZGUeUEDhqoC8DmnnWH6kxatZxgQKE6tKxQnXV5uaIWXOASADCm2vd8uOcF1CUuBT8JqGIku42NsiH7jW9U_jb8tAqGE/s320/Snowflake%20Stack%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1784989168/Snowflake_Stack_pkkcj0.mp3","gremtv":"https://gremtv.blogspot.com/2025/12/Snowflake-Stack.html","explicit":false,"row":22,"songId":"snowflake-stack","songTitle":"Snowflake Stack"},{"id":"track-23","releaseDate":"2026-12-21","album":"Christmas With the Gremlins","title":"Snowflake Stack, Gentle Edition","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimbnS9Q0pZeWgQwJLgvLYU7i2beLodf9XAWG2UaWMZzxiO09hXsHGeUWZ71f7p8ZPIvYnaVDDIfOzYvSDTcVX_BC4z_Jcne2jrZGUeUEDhqoC8DmnnWH6kxatZxgQKE6tKxQnXV5uaIWXOASADCm2vd8uOcF1CUuBT8JqGIku42NsiH7jW9U_jb8tAqGE/s320/Snowflake%20Stack%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1784989170/Snowflake_Stack_Gentle_Edition_y1rtgg.mp3","gremtv":"https://gremtv.blogspot.com/2025/12/Snowflake-Stack.html","explicit":false,"row":23,"songId":"snowflake-stack","songTitle":"Snowflake Stack"},{"id":"track-24","releaseDate":"2026-12-22","album":"God or Gremlin","title":"Christmas Movies","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6b1ZdjI1TABwLN2N2ysvS19BV7uI6uIyqI8_tZA1DNQh7E5ug-yiHlRg9wvF_Gj8n5zdOyKyydWXjrNfY8iZuaV7BA_UX-QXEXGyL9YwEiOJfIbLupcGvGZkQ4CL9grK0WfU24N47j9xA3WtweXraY_nGsrir4TNtZbWlveO3_XFXePUBxX3uLB3lGZs/s320/Holiday%20movie%20showdown_%20cozy%20vs%20chaos.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776029308/God_Or_Gremlin__Holiday_Movies_Edition_cdiidx.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-movies-edition.html","explicit":false,"row":24,"songId":"track-24","songTitle":"Christmas Movies"},{"id":"track-25","releaseDate":"2026-12-23","album":"Christmas With the Gremlins","title":"Why is it Blue? (Eggnog Song)","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLi7OJd85hJ_VNvBsdG-DAGj9nByT0cYGyQ62D-EwH0H4VTPX1mX7Z7BQLa8iyNsPAKGteoyYXgzL7ZteefMWiW-mpvGb5HsNkMPrn7rWqMrJVIkrQlrikbOP_HmeRFTgHH7G9PW-LoRfB7RPyMfOE9TdijBvjhIZ24d3MxZSswV9GWAW1iHWMx8dSTT8/s1254/why%20is%20it%20blue%20eggnog%20song%20cover%20w%20warning.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776555236/Why_Is_It_Blue__The_Eggnog_Song_hc5qif.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/why-is-it-blue-eggnog-song.html","explicit":false,"row":25,"songId":"track-25","songTitle":"Why is it Blue? (Eggnog Song)"},{"id":"track-26","releaseDate":"2026-12-24","album":"God or Gremlin","title":"Christmas Eve Edition","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeuJ2MI2eEIuWrTRQDmQ8d395uviaXZW0MhiseXDUdaLlCb2eMANhWVqfMZNzRHE5g7u1PQWDyZDebrfuT6bf2oj8u0RbtBG69Bnef1Xhu-s0vMDbO_E1z_hsTHwVc3uMLa_TcAR8W0QPPaBItMeaTeVcTuY4eH0abjSWuIV-MT1hZnw/s1600/God%20or%20gremlin_%20Christmas%20chaos%20edition.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776075180/God_Or_Gremlin__Christmas_Eve_Edition_1_xnu97l.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-eve-edition.html","explicit":false,"row":26,"songId":"track-26","songTitle":"Christmas Eve Edition"},{"id":"track-27","releaseDate":"2026-12-25","album":"Christmas With the Gremlins","title":"Gremlin Christmas Morning","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxhuD840xlkJvfolOl3cta0-ItoqyvDnq1gbXMJJNWligG6RV_gJRL9yZyK15MRkRpRW88cgXd5qkkm88F5L8lpankgNqocAQQusneuqeVIm0kM01zMXziWn0dQtAfZjOMnvEf3Rd1pCvJQdHQFQL6xHupIOv7P4Bj0zLImB038DKVdIiGtQgaNTIHVo4/s320/Gremlin%20Christmas%20Morning%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783174903/Gremlin_Christmas_Morning_qfrwq8.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/gremlin-christmas-morning.html","explicit":false,"row":27,"songId":"track-27","songTitle":"Gremlin Christmas Morning"},{"id":"track-28","releaseDate":"2026-12-25","album":"Christmas With the Gremlins","title":"More than the Present","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPPHh35XmaFUVjB_833KYXpTUpJfVb93g9lo0voOuCnuxTePbUo3-g5uDRvYAKHB98-bXvhL6pB9fqE2JHd9cuagd8TD8RgerBhZs5WbFRNKIEVGJ685sFuf6hbCDgru7qP8NNaAP9VDe8-3yiIxoi5x1s-OvFiBi7YjGIgMxCEJ90XONL1DfhXX6ffSY/s320/More%20Than%20the%20Present%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1793506014/More_Than_the_Present_F_yxl2mh.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/more-than-present.html","explicit":false,"row":28,"songId":"more-than-the-present","songTitle":"More Than the Present"},{"id":"track-29","releaseDate":"2026-12-25","album":"Christmas With the Gremlins","title":"More than the Present [Duo]","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCzkRNI1soQ2xuMFY5f6ar4nOtDfiyBlWM6KfQhlnBtXB1-x6AkxagEdp7iUwBtt2CRvHBLfVA7raFZbILknprD3Z3u9FkuZrB42XL-qZLED3uV-ET7vgpuDXStLo9DUKdxoyxU5nQi6QKZM_NjC0e3iwZAxnv_MSXzNl4o2_CY8kguU6SR51UhTOd3Os/s320/More%20Than%20the%20Present%20Duo.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_votmrv.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/more-than-present.html","explicit":false,"row":29,"songId":"more-than-the-present","songTitle":"More Than the Present"},{"id":"track-30","releaseDate":"2026-12-25","album":"Christmas With the Gremlins","title":"More than the Present {Explicit Lyrics}","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPPHh35XmaFUVjB_833KYXpTUpJfVb93g9lo0voOuCnuxTePbUo3-g5uDRvYAKHB98-bXvhL6pB9fqE2JHd9cuagd8TD8RgerBhZs5WbFRNKIEVGJ685sFuf6hbCDgru7qP8NNaAP9VDe8-3yiIxoi5x1s-OvFiBi7YjGIgMxCEJ90XONL1DfhXX6ffSY/s320/More%20Than%20the%20Present%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1793506014/More_Than_the_Present_F_Explicit_coo5vg.mp3","gremtv":"https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_explicit_ekuw3n.mp3","explicit":true,"row":30,"songId":"more-than-the-present","songTitle":"More Than the Present"},{"id":"track-31","releaseDate":"2026-12-25","album":"Christmas With the Gremlins","title":"More than the Present Duo Explicit","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCzkRNI1soQ2xuMFY5f6ar4nOtDfiyBlWM6KfQhlnBtXB1-x6AkxagEdp7iUwBtt2CRvHBLfVA7raFZbILknprD3Z3u9FkuZrB42XL-qZLED3uV-ET7vgpuDXStLo9DUKdxoyxU5nQi6QKZM_NjC0e3iwZAxnv_MSXzNl4o2_CY8kguU6SR51UhTOd3Os/s320/More%20Than%20the%20Present%20Duo.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_explicit_ekuw3n.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/more-than-present.html","explicit":true,"row":31,"songId":"more-than-the-present","songTitle":"More Than the Present"},{"id":"track-32","releaseDate":"2026-12-26","album":"Christmas With the Gremlins","title":"Candy Cane Hockey","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBxDC2PQWizhsjLn4xK3nfXmC9jct9f2BDBJehKJGQgcFvXcELb4QpH0KhaxKpBxYLP8sCHlbib660XxSD_D9r7mSSz9wSXuWcYYKYNGZ7HOcCc6M2gc1n8CW_uKcxeL6j450rsx49OxJH_etXUnhMg4dA2J_Yk1bLeI_R4XF3NPSdwRJohDrOgEEqsoc/s320/Candy%20Cane%20Hockey%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783454425/Candy_Cane_Hockey_Published_cgf5pn.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/candy-cane-hockey.html","explicit":false,"row":32,"songId":"track-32","songTitle":"Candy Cane Hockey"},{"id":"track-33","releaseDate":"2026-12-27","album":"Christmas With the Gremlins","title":"Snowball Fight","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjj5W8nHNSA1ckV9EJkkf6NcDSYDr2SoLFvoZaT7e5LCjb-J6_JLFHJZzg3pnUB1s8-rMVvC9jeaouZecZ7fZM0k4J533qNBEJ-BQXWI_kYO91T5T8tGGLP8yaLDZEsJjyKZczaAjfAnV97EjXpxkg8739eBjVafAAy71tIsTyq83OMpb9lsGBwKhnKLpc/s320/snowball%20fight%20spotify%20cover.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783009805/Snow_Ball_Fight_bko1pq.mp3","gremtv":"https://gremtv.blogspot.com/2026/02/youtube-video-player.html","explicit":false,"row":33,"songId":"track-33","songTitle":"Snowball Fight"},{"id":"track-34","releaseDate":"2026-12-28","album":"God or Gremlin","title":"It's Alright","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn5RGmIxnE54RgKDkmkj05smUaqHZhFaeF7VQ3u_y2wkNGQb6rdQ9k48yz1qsoOx6cu8pl9jf2rbD7gDB9pCEsNcyzEM7jfr00UONeZbtSowZiCrw8GduuAU3WMOzqNBU-fz2ObJNq0HK9_H6yyraAtZYm993Qp87ImhPeMfv3UbhL6IAlkou81qKWcgc/s320/Grumpy%20gremlin%E2%80%99s%20holiday%20struggle.pn","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1776033922/God_Or_Gremlin__Hosting_Holiday_Spirit_Edition_oxar1d.mp3","gremtv":"https://gremtv.blogspot.com/2026/04/god-or-gremlin-its-alright.html","explicit":false,"row":34,"songId":"track-34","songTitle":"It's Alright"},{"id":"track-35","releaseDate":"2026-12-29","album":"Small Offerings","title":"I Like You More Than Bacon (Bacon Day)","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyWYkRzgyDEEuHL-RYe_oOt3utBudnc9rCls7LXGooo9Fo43DwV1ngoGB11bSNasyjZYJxayEsdXp0EaPoBiM46LsDU5HkP7KTYiLOCfD0jSfMvWN23laxH6HmAgbJkHwByzmit0bbQIWvCKOYa4ZzxqMxwRe-k9FNOE2wsDwMURXRKLNY4My7OzHPWoA/s742/I%20like%20you%20more%20than%20bacon.PNG","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1778318424/I_Like_You_More_Than_Bacon_F_pb7g8y.mp3","gremtv":"https://gremtv.blogspot.com/2026/05/i-like-you-more-than-bacon.html","explicit":false,"row":35,"songId":"more-than-bacon","songTitle":"I Like You More Than Bacon"},{"id":"track-36","releaseDate":"2026-12-29","album":"Small Offerings","title":"I like you More Than Bacon (Bacon Day)","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyWYkRzgyDEEuHL-RYe_oOt3utBudnc9rCls7LXGooo9Fo43DwV1ngoGB11bSNasyjZYJxayEsdXp0EaPoBiM46LsDU5HkP7KTYiLOCfD0jSfMvWN23laxH6HmAgbJkHwByzmit0bbQIWvCKOYa4ZzxqMxwRe-k9FNOE2wsDwMURXRKLNY4My7OzHPWoA/s742/I%20like%20you%20more%20than%20bacon.PNG","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1778318426/I_Like_You_More_Than_Bacon_M_vkfbri.mp3","gremtv":"https://gremtv.blogspot.com/2026/05/i-like-you-more-than-bacon.html","explicit":false,"row":36,"songId":"more-than-bacon","songTitle":"I Like You More Than Bacon"},{"id":"track-37","releaseDate":"2026-12-30","album":"Christmas With the Gremlins","title":"It's Blursday Relax","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmONDlm06yojyaRK77Vb8zQc2HDxglTCnSPDO1wLhNUX9sb3ToAxtK_0pJknyKg4NQ-ePvRmsZJeOUuCw-XFU60K4sAViNsgE41NgjwNQ5O9ZAy1Kvmx207nP7B2BuU_3A91ob0tyj5Luwn7iHh37WkjCzS97S3CkVsBTZ5zaFAXNVEhZ2Z9Y1x049Bnc/s1254/Blursday%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783212736/It_s_Blursday_Relax_gumkhz.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/its-blursday-relax.html","explicit":false,"row":37,"songId":"track-37","songTitle":"It's Blursday Relax"},{"id":"track-38","releaseDate":"2026-12-31","album":"Christmas With the Gremlins","title":"Happy New Year","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYF8hS7FSe2fz3Tq3EQVfRT4DrcpCPOHD6yppzf2iudXIWjwD2IgRs6j7UN8OUxt6zc3aYVLI8QVzEzzPv_uHJv8pHTqC6L-gIR07PgFzA2_bs6RHJ1rDFZ6s-G_L_7zow9PDkJrr2PEDgJUysfCIMKem6DdJeuc6xJEUthdaDfX3XD-Wz9jkmy4CN0pY/s1254/Happy%20New%20Year%20from%20the%20Gremlins!.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1782942778/Happy_New_Year_from_the_Gremlins_ftvvxh.mp3","gremtv":"https://gremtv.blogspot.com/2025/12/happy-new-year-from-gremlins.html","explicit":false,"row":38,"songId":"track-38","songTitle":"Happy New Year"},{"id":"track-39","releaseDate":"2027-01-01","album":"Christmas With the Gremlins","title":"Hangover Song","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg81JnweArbmptusBviwYgfBSO2j4siESLNFL320wipsHNlNZWkbMxUYx9RB2Abin9618t3PdVpswbRNuvvSKJuGci8O7C4Bq7Lm0XXQOduoPd_cAGf6E00MxZp6sEBeSJo0uR33Xp52GWRKGixIpJwAhrGJKJMVAvFKemikyQWaKYIj-unwdkEnXhieyo/s320/The%20Hangover.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783173746/Hangover_Song_lbcck9.mp3","gremtv":"https://gremtv.blogspot.com/2026/12/the-hangover-song.html","explicit":false,"row":39,"songId":"track-39","songTitle":"Hangover Song"},{"id":"track-40","releaseDate":"2027-01-02","album":"Sofa Spud Soundtrack","title":"Ode to a Personal Trainer","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcJ4bmewH7bIZdWitQbGrg5xE1ek2ZeUm0WcKXvkIO06BL1mzJ-suuM9Yc5asnFVbi6n8grRo0Qu_t8Yvq1bBNHJGhdKxo7Rrf_3LKE9KTwsGklAgJzq4d2ggTUUKKnWSh2aseU6LApZRRrrUDpIaWd4meUEB-NSQ06gDG0iNY1uB3TicjrQryV21gFT4/s320/ode%20to%20the%20personal%20trainer.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783015087/Ode_to_the_Personal_Trainer_hzkyta.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/ode-to-personal-trainer.html","explicit":false,"row":40,"songId":"track-40","songTitle":"Ode to a Personal Trainer"},{"id":"track-41","releaseDate":"2027-01-03","album":"Sofa Spud Soundtrack","title":"Nuts to Resolutions","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoruIPucZKtbLZWrLPXDDBbw9r2gjdyIdtKvK1X0eA46eAIfFSTy7t3G62ZtJMrl4ojE9yCTGD-vgQYr9P4yPltQT-2m1vs3fs-89UAM-ToEQyhND_dKkpDjRzepK9JSOPAHkc3uoXESzWjTSu1bg5vCio-xgMZfdHC7H41VzQznNMc3QozOSSvExe0KU/s1254/nuts%20to%20resolutions%2011.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785513040/Nuts_to_Resolutions_Radio_Edit_bg6jm3.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/nuts-to-resolutions.html","explicit":false,"row":41,"songId":"nuts-to-resolutions","songTitle":"Nuts to Resolutions"},{"id":"track-42","releaseDate":"2027-01-03","album":"Sofa Spud Soundtrack","title":"Nuts to Resolutions - Explicit","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiop49VJfhkPspy_REDXnkPNedhsW0yjYo8rDFiP2hbvsG76vmR_ZafBB2Iy1M-2bD549gYDwpeCy4NvlT9eE0ArZ0UkVt8hio59jHKaeHwrbVx2ug_b2-WtPZVEF0aa0V7wMmtHNrinx2Pq5ewbFyrgel_TpEqLQ8JSCIa8JRi82-_hRREaO_x8OVawgo/s320/nuts%20to%20resolutions%2011%20pael.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785512960/Nuts_to_Resolutions_-_explicit_eb4nfg.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/nuts-to-resolutions-explicit.html","explicit":true,"row":42,"songId":"nuts-to-resolutions","songTitle":"Nuts to Resolutions"},{"id":"track-43","releaseDate":"2027-01-04","album":"(Theme Songs)","title":"GAMBIT THEME - Trivia Day - Gremlin Gambit Deck of Dumbassery","artwork":"","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1783710869/Gremlin_Gambit_Opening_jnayyu.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/gremlin-gambit.html","explicit":false,"row":43,"songId":"track-43","songTitle":"GAMBIT THEME - Trivia Day - Gremlin Gambit Deck of Dumbassery"},{"id":"track-44","releaseDate":"2027-01-05","album":"Sofa Spud Soundtrack","title":"KETO? Whipped Cream From a Can","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8EhhakGBGVVzliKfjUaFz83ap0lEg6-9VL30_66WJqmsLjFSTQqeAy93S-hdVCkO9mw0wevZM2sTUgNQSwRACz5t24JYE9ep7rZ9EgfSIBOS-soJAzgH5JdxNmNVEq8Q-aSQ5lGoLK3Pd0Koi5Y3dCdbXJ7cnjjbbTDwKA0YSZp31UFrNGWhieX-XpHo/s320/Keto%2011%20a.png","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785514066/Keto_Kitchen_Emergency_Tactical_Operations_a43con.mp3","gremtv":"https://gremtv.blogspot.com/2026/07/keto.html","explicit":false,"row":44,"songId":"track-44","songTitle":"KETO? Whipped Cream From a Can"},{"id":"track-45","releaseDate":"2027-01-06","album":"Christmas With the Gremlins","title":"Gremlin Take Down the Tree. Or Not.","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCx-6Gei6uhBdMU_gaTE7U2NqtnspHAXy076h9-JCHCL25-7nJQdbht53PoxXyeUzjzNOY-KBtys10arzd274ZscZHsGIynO1xdTh1boeeR19PMJ_WCBvbdZEdgHA6dT4g8Wn-AqyDTkVdRo3QXzpL3H4fK_cKg0Mzox71UrzAcNLh5Q/s1600/image1785654381","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785657781/TAKE_DOWN_THE_TREE_OR_DON_T_ekiwir.mp3","gremtv":"https://gremtv.blogspot.com/2026/08/take-down-tree-or-not.html","explicit":false,"row":45,"songId":"take-down-the-tree","songTitle":"Gremlin Take Down the Tree"},{"id":"track-46","releaseDate":"2027-01-06","album":"Christmas With the Gremlins","title":"Gremlin Take Down the Tree. Or Not. (Anthemic Cinematic Version)","artwork":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdnZ38iU-ZZEmAlAExp7gykb2uHWgYow5KhD5qmrpDct7gbv3rJEM9byWRSyla7BYIxfCy_Yt9YHgnfcxOI1ncfQLb7-N1Fzb0Gw5-ka-PRMbJa5L1SYNN7dWVFp-IAHb9CPKeuLuQZTcQtQ3bzHMwUVrBW0jY930jSZ6I4IbZmLqByg/s1600/image1785657561","audio":"https://res.cloudinary.com/dktoygra7/video/upload/v1785657777/Take_Down_the_Tree_Anthemic_Cinematic_Mix_mo5d60.mp3","gremtv":"https://gremtv.blogspot.com/2026/08/take-down-tree-or-not.html","explicit":false,"row":46,"songId":"take-down-the-tree","songTitle":"Gremlin Take Down the Tree"}];
+const TRACKS = [
+  {
+    "id": "track-2",
+    "releaseDate": "2026-12-01",
+    "album": "Christmas With the Gremlins",
+    "title": "December is Here",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikapEiTbKcs1L_aO3ntlV1_zaSYTy8D-f74HCjFm0j1ftbhZ8AcXR_bHwH-lE0KTRUic4m9DwSHA2mNZb1cHTXCoJ6F6Gb_IODLyiqxyeXzY5tuJmlb6Nfw8LWzRpQWETMB82HtMZnLWXkd-HJk7ROe_q1TD6CnMOn3sDIaZliQUKxa3N-8aJ3ftZP8eQ/s3000/December%20is%20Here.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783004290/December_is_Here_gx275s.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/11/december-is-here.html",
+    "explicit": false,
+    "row": 2,
+    "songId": "track-2",
+    "songTitle": "December is Here"
+  },
+  {
+    "id": "track-3",
+    "releaseDate": "2026-12-02",
+    "album": "Christmas With the Gremlins",
+    "title": "Gremlin Elf on the Shelf",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEievzmXHbIRWrBvg7u6G6uRWsxBy2ZQ6OdMMf3V-MAEIeUHjeMc62aoS6hWOc47HQ7eYRFOv505XRuckeWDrmfAiju7MY8C__cwjt-F-rLlYtfXzQrK1a4RlEiBhzD_PvBHQR3MfdXU68uoLy1v2fjJ91XNH-j5Hmkfnk8hsYG2foLETA/s1600/EOTS%20single%20cover.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783013193/Gremlin_Elf_on_the_Jingle_fbylpl.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/elf-on-shelf-jingle.html",
+    "explicit": false,
+    "row": 3,
+    "songId": "track-3",
+    "songTitle": "Gremlin Elf on the Shelf"
+  },
+  {
+    "id": "track-4",
+    "releaseDate": "2026-12-03",
+    "album": "God or Gremlin",
+    "title": "Christmas",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjzdxiYhCgqnRlL3P4WB0b_mcLuL6_X-BR9wwq-VEAyy6AkYlt5ssnJPSS-6N0SmNhTweDXbO8hTZq8QnzlpzhBnk8DsONn8DGRQ2jIv4unBx3tuxgbiG4IkgrJVkeaTWI5pD2qvjNAQcB8I8U1B7182W3va21Gb7FoTJtDmGHXvde9AQz8xEHzE4eHLc/s790/God%20Or%20Gremlin%20December%20Mix%20Tape.PNG",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1775989365/God_Or_Gremlin__Christmas_Edition_j5t9ui.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/GOGXmas.html",
+    "explicit": false,
+    "row": 4,
+    "songId": "track-4",
+    "songTitle": "Christmas"
+  },
+  {
+    "id": "track-5",
+    "releaseDate": "2026-12-04",
+    "album": "God or Gremlin",
+    "title": "Decor",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwM8bx1tX-eS3EI9OAbXCQIoqQ-QK0q3VhHmlPlTWgJdJ8UxSN4708PTnNx35xlZS8ZUySggLZsewjwd8Cenkg-RSFRhEzGLAV0-U3pAgluTOgkCCYc6h_hcmw8RSvTciOWkJyR5mgR_8wtuqbosVMLKTJzJBLt_KwLIgnH2IM3GmT1g/s1600/Holiday%20decor%20showdown_%20perfect%20vs%20chaotic.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776006263/God_Or_Gremlin__Decor_Edition_arsrlo.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-decor-edition.html",
+    "explicit": false,
+    "row": 5,
+    "songId": "track-5",
+    "songTitle": "Decor"
+  },
+  {
+    "id": "track-6",
+    "releaseDate": "2026-12-05",
+    "album": "God or Gremlin",
+    "title": "The Tree",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP7gT2oqL6yDQbdV71VmJ6j5_XOrGNT0wO39kNWDH0dnWjy4JYNG6XqofsxbRw1IuiAH_A7Q-OGSe-Y_BhoBXKMITL4lhdYdWsaA2bXywi9081cWgCyyUD2KtQn3_SSW_037gbViLQiOduIAhsu2-wfZKSMKAoBXXYMjjWacOnabmBYA/s1600/God%20or%20gremlin_%20Holiday%20tree%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1775980780/God_or_Gremlin__Tree_Decorating_kxkmlo.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-tree-edition.html",
+    "explicit": false,
+    "row": 6,
+    "songId": "track-6",
+    "songTitle": "The Tree"
+  },
+  {
+    "id": "track-7",
+    "releaseDate": "2026-12-06",
+    "album": "God or Gremlin",
+    "title": "Elf on the Shelf",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSAVDMcNPoYJOmeZ8EajRxARCTa6QeoIL9-jP9SWMMsjerlZLywoW4_Q5wxHUEWIiMYVIUvIqss8tlQiYL1XXPvvj7vWzSUxlteHgh8nGWQcVZOATgIv9aYRUqQh3I_t5OSXo2NCH4HkFtHIXWiU5zLi4uyGYjhl2UevXMTeTWjIAyWQ/s1600/Good%20elf%20vs%20gremlin%20chaos.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776003369/God_Or_Gremlin__Elf_on_the_Shelf_1_acrgrv.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-elf-on-shelf-edition.html",
+    "explicit": false,
+    "row": 7,
+    "songId": "track-7",
+    "songTitle": "Elf on the Shelf"
+  },
+  {
+    "id": "track-8",
+    "releaseDate": "2026-12-07",
+    "album": "God or Gremlin",
+    "title": "Gift Buying",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSjEu1VSl25LK6KXH8niwggyLMj4zVLAZnvUCNzpx-QRQqzOPa44lrVZlXRlrjzHzuxrNuQmd82e_1GbMaxjLn4AOgMlpyYpkhDLJD6KXkZ7SdhJTtCD2tgaazu8b58FPvT-0StpS_O9xDgNT7uchtwXyWqNP4Hfk-8uTbV5lKQJpHSg/s1600/God%20vs%20gremlin_%20the%20holiday%20shopping%20battle.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1775997926/God_or_Gremlin_gift_buying_edition_fvrbzv.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-buying.html",
+    "explicit": false,
+    "row": 8,
+    "songId": "track-8",
+    "songTitle": "Gift Buying"
+  },
+  {
+    "id": "track-9",
+    "releaseDate": "2026-12-08",
+    "album": "God or Gremlin",
+    "title": "Gift Squirrelling",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAal9q3enNO7vYLYVx3xhvQf-TGkH88t38gP6Z5M8bZVx29F1R40Z2jyMnBK9pcF50R5z8EA2EwjHcYfwWjuSx_y5s2_rrFUeceDwzk6FY3PykUlfBNhXpx4jPWqhUFQCqz16clJgPFXHKgC0EsROAT9vtIeBREanaYDfVpCMy8dOhQ/s1600/God%20vs%20Gremlin_%20Christmas%20chaos%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776036685/God_Or_Gremlin__Gift_Squirreller_Edition_n5do0l.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-squirreller-edition.html",
+    "explicit": false,
+    "row": 9,
+    "songId": "track-9",
+    "songTitle": "Gift Squirrelling"
+  },
+  {
+    "id": "track-10",
+    "releaseDate": "2026-12-09",
+    "album": "Christmas With the Gremlins",
+    "title": "Christmas Card Confusion",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDYebyu3cHz1pzw28ZSEExZ2dls7dHrwyi0pUIdDWlzhntdS1jT32jbgDdyner0xFl8Zlk8vJ-CkWrvJe-i3GDsvU1Iabs7S_5c1nechrnqzikxEBVbMix4IkKN7mocgSTniRMjSXXCAIM6ug4jBM10E7MaYedDAziyTU4ReCFlIPU6YToLmUi1lwhGoM/s320/Christmas%20Card%20Confusion%202%20a.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783520506/Christmas_Card_Confusion_kby35b.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/christmas-card-confusion.html",
+    "explicit": false,
+    "row": 10,
+    "songId": "track-10",
+    "songTitle": "Christmas Card Confusion"
+  },
+  {
+    "id": "track-11",
+    "releaseDate": "2026-12-10",
+    "album": "God or Gremlin",
+    "title": "Gift Wrapping",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHpMhxxf_hsIeceRUccTy_HHxRe0kQ7qBiJj-nyEr4SuJwIy01rpNXF1kjLke7kta75X14qBZnuHlhlTTjJit5Na7PtKOzfQlpy9u6nQbIUAhVAyqaGUEySrEwIitisOaiYxiuENzb6awSuqLCNBTYBb-a9iGiirmQe3OPl850jXaFgg/s1600/God%20or%20gremlin_%20holiday%20wrapping%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776038582/Gift_Wrap_God_or_Gremlin__zmupgz.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-wrapping.html",
+    "explicit": false,
+    "row": 11,
+    "songId": "track-11",
+    "songTitle": "Gift Wrapping"
+  },
+  {
+    "id": "track-12",
+    "releaseDate": "2026-12-11",
+    "album": "God or Gremlin",
+    "title": "Gift Hiding",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhki5E-LuCWC_NeDq-LBDCIpVwULHEowlYy1PZN6ZF3LcX1W5j1ovxUUBoJJqDojtVHlF1gtnv7a51ecohLVFWwQq86zcICim4oUGlrKwpzGHu35NWGu1xvgqTDelIjEoVGHkj14pUTG8ZK7KTOhLh64H4dgwx7vcscV29hPzG1HgBruA/s1600/God%20vs%20gremlin_%20gift%20hiding%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776039734/God_Or_Gremlin__Gift_Hiders_Edition_fk0wzl.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-hiders-edition.html",
+    "explicit": false,
+    "row": 12,
+    "songId": "track-12",
+    "songTitle": "Gift Hiding"
+  },
+  {
+    "id": "track-13",
+    "releaseDate": "2026-12-12",
+    "album": "God or Gremlin",
+    "title": "Gift Seeking",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWpeIvpa-jW_wo9gm5lSsYrHz-QfeyM1CJjGqDKIvBG5e1n-OPrdxlQHMjcopVZmzUfoVjSSumWZ-Ksp12C1nC6IXA8OUjO-Bz2ew2x_0bAY-NzVwU5i3BMuDRsNPi3PsvPliQKeBNiTPpt7N2c7vUmnKipntSpMbeRjC2md461_7smw/s1600/God%20vs%20gremlins_%20holiday%20chaos%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776040754/God_Or_Gremlin__Gift_Seekers_Edition_cnwdik.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-seekers-edition.html",
+    "explicit": false,
+    "row": 13,
+    "songId": "track-13",
+    "songTitle": "Gift Seeking"
+  },
+  {
+    "id": "track-14",
+    "releaseDate": "2026-12-13",
+    "album": "God or Gremlin",
+    "title": "Gift Giving/Receiving",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0wNkKvlejAfOzvTls2b2ZyXSm99GExq_8rNhq2YC12jfYCXKWUenbCiZjVg4OEUXxd88A2EO2YxL3Vlcmc4jh2iLrOG3BulLt61AwRm7tvYG8cvb6Icq1vUH3mKYXDrPpttor2qTLTlJKLf1ryEAPnSS9TSswIu9whQZqSOVPPENoVw/s1600/God%20or%20Gremlin%20Gift%20Giving%20Edition.PNG",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776000264/God_Or_Gremlin__Gift_Giving_Receiving_Edition_corrected_1_r4t8r7.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-gift-givingreceiving.html",
+    "explicit": false,
+    "row": 14,
+    "songId": "track-14",
+    "songTitle": "Gift Giving/Receiving"
+  },
+  {
+    "id": "track-15",
+    "releaseDate": "2026-12-14",
+    "album": "God or Gremlin",
+    "title": "Holiday Attire",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiHnzHxqy6MZgx8i1-MXWATG0V3NI-9Nfr5bm5_JAir4xxy-TvLK5WkqFQE5xKBCWMAuHU9p4XQA3hXOlPouSh2Xwko6-9hhXC-5QgaWUXVgBcyX6eu9S23sbMJ7SxqjnJSARGAJZltseNPkLuru-Ql5owz0Zw76zOA2uCIF9jQ3wKHQ/s1600/Holiday%20attire%20showdown_%20stylish%20vs%20chaotic.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776007717/God_Or_Gremlin__Holiday_Attire_Edition_wcdsu1.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-holiday-attire-edition.html",
+    "explicit": false,
+    "row": 15,
+    "songId": "track-15",
+    "songTitle": "Holiday Attire"
+  },
+  {
+    "id": "track-16",
+    "releaseDate": "2026-12-15",
+    "album": "God or Gremlin",
+    "title": "Hosting (Holiday Spirit(tm))",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSBIgSz3upKbd_07wkunow1Xzbj7ujVKCW_hY2VHQy9q5KqM5bgaHj_91LNp3m2PUEJqg4ABG8XWHHq3PzchXEsCG1DfpTEH1cN8b0one8wZCZXnySBQKgo6j51F9bmONC2YkThp_75dxPPQ5haQpmaakeB4apsYqd9P9wRpMeOWMrAA/s1600/God%20or%20Gremlin_%20Holiday%20chaos%20unfolds.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776033922/God_Or_Gremlin__Hosting_Holiday_Spirit_Edition_oxar1d.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-hosting-holiday-spirit.html",
+    "explicit": false,
+    "row": 16,
+    "songId": "track-16",
+    "songTitle": "Hosting (Holiday Spirit(tm))"
+  },
+  {
+    "id": "track-17",
+    "releaseDate": "2026-12-16",
+    "album": "Christmas With the Gremlins",
+    "title": "Secret Santa Shambles",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizKj07U6Ygj1GOUTSzBXpKtfsxW5BdoXLzerg972lbldb65J7V1494EkLQIgXQk6Hw0qQ_9P7kKEnHmMg4-VHKNr2WYNNCLUSKdp9z2V2jw-74AAFwuSZJ-_izrEA8jeqdTk55hG95N6sUVLSsI2p9Cr5tzF2lpNIV0E13WZzVhck06jRVBtTJWWWdi-M/s320/Secret%20Santa%20Shambles.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785003369/Secret_Santa_Shambles_-_Operetta_yphqkv.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/secret-santa-shambles.html",
+    "explicit": false,
+    "row": 17,
+    "songId": "track-17",
+    "songTitle": "Secret Santa Shambles"
+  },
+  {
+    "id": "track-18",
+    "releaseDate": "2026-12-17",
+    "album": "God or Gremlin",
+    "title": "Christmas Baking",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrwKcI0yfDmvXbcZHEkKqibhY_-TwvnbQZFMvz9LlXqpFR6jsYtzN_u03Zz2Oq2howd8FMQTz_KhzR22enitcpDwDz0Ba0DgDyERY5aPvSGp4A8-g9L8ixEbwEf_JTjBupUE8IqcwPlq30julQ4_9G-e5pZ2KO15IOKD0-d9-Tl7sm3A/s1600/Holiday%20baking_%20angelic%20vs%20chaotic%20fun.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776028580/God_Or_Gremlin__Holiday_Baking_Edition_nrkgnd.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-holiday-baking-edition.html",
+    "explicit": false,
+    "row": 18,
+    "songId": "track-18",
+    "songTitle": "Christmas Baking"
+  },
+  {
+    "id": "track-19",
+    "releaseDate": "2026-12-18",
+    "album": "God or Gremlin",
+    "title": "Christmas Dinner",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTtmDBlPTrxmosrNYTjTQGoh5bi7CcKUecGIXh4r__LduMuVu97rMkidIB7xkreeWJlEQuHaNB_Wu4mDStkVO0JzXCzzGHhBxluYDkkrfK8jETKdXUpOaLOUQH2xZ8_uUyLmfddwQQsyZmXNzOhiTgTAqI5JwGYttUghn66GW42v-tpU9zAmlYrr2Wyp0/s1254/Holiday%20dinner_%20god%20vs%20gremlin%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1775979941/God_or_Gremlin__Dinner_gcvlpa.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-dinner-edition.html",
+    "explicit": false,
+    "row": 19,
+    "songId": "track-19",
+    "songTitle": "Christmas Dinner"
+  },
+  {
+    "id": "track-20",
+    "releaseDate": "2026-12-19",
+    "album": "Christmas With the Gremlins",
+    "title": "Ugly Christmas Sweater Day",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXoQPWOmhNB88s3UJ6jMar08rTShkxPCvNqwmHoa5aVER8MSiLOHITTmmGVosMbTz2NM8ot4HIvYpzxsPpDmU36lE3MOsbVAKIIFxUx-oz98htFunUWgyhUcrmCnYjDPqm9S6g1EaZiddoHirajHWO_p7rBBciLzeUhvdiTDHCTn4TkyV5BnKri1mN0Tg/s320/Ugly%20Christmas%20Sweater%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785497877/Ugly_Sweater_Day_The_Official_Origin_Story_rotjuv.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/ugly-christmas-sweater-official-origin.html",
+    "explicit": false,
+    "row": 20,
+    "songId": "track-20",
+    "songTitle": "Ugly Christmas Sweater Day"
+  },
+  {
+    "id": "track-21",
+    "releaseDate": "2026-12-20",
+    "album": "God or Gremlin",
+    "title": "Christmas Music",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZM_MqdmigMQDywkuBHnkQCXUoKi53jYQVnczZFNO8pyKYSJ6N3V4AMNCe-hHIURQkr6Y9MvkImmWuCVfcKZMjQxt3HeWMZeUOMN0KHlxaKcvQZQUlacIZ_i419vqEXoqDk3rLLbkLBlzfaS5UZfV7n3UWWvKF44cSCqGWnM53PtHETQ/s1600/God%20or%20Gremlin_%20Christmas%20music%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776037715/God_Or_Gremlin__Christmas_Music_Edition_zjaeja.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-music-edition.html",
+    "explicit": false,
+    "row": 21,
+    "songId": "track-21",
+    "songTitle": "Christmas Music"
+  },
+  {
+    "id": "track-22",
+    "releaseDate": "2026-12-21",
+    "album": "Christmas With the Gremlins",
+    "title": "Snowflake Stack",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimbnS9Q0pZeWgQwJLgvLYU7i2beLodf9XAWG2UaWMZzxiO09hXsHGeUWZ71f7p8ZPIvYnaVDDIfOzYvSDTcVX_BC4z_Jcne2jrZGUeUEDhqoC8DmnnWH6kxatZxgQKE6tKxQnXV5uaIWXOASADCm2vd8uOcF1CUuBT8JqGIku42NsiH7jW9U_jb8tAqGE/s320/Snowflake%20Stack%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1784989168/Snowflake_Stack_pkkcj0.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2025/12/Snowflake-Stack.html",
+    "explicit": false,
+    "row": 22,
+    "songId": "snowflake-stack",
+    "songTitle": "Snowflake Stack"
+  },
+  {
+    "id": "track-23",
+    "releaseDate": "2026-12-21",
+    "album": "Christmas With the Gremlins",
+    "title": "Snowflake Stack, Gentle Edition",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimbnS9Q0pZeWgQwJLgvLYU7i2beLodf9XAWG2UaWMZzxiO09hXsHGeUWZ71f7p8ZPIvYnaVDDIfOzYvSDTcVX_BC4z_Jcne2jrZGUeUEDhqoC8DmnnWH6kxatZxgQKE6tKxQnXV5uaIWXOASADCm2vd8uOcF1CUuBT8JqGIku42NsiH7jW9U_jb8tAqGE/s320/Snowflake%20Stack%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1784989170/Snowflake_Stack_Gentle_Edition_y1rtgg.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2025/12/Snowflake-Stack.html",
+    "explicit": false,
+    "row": 23,
+    "songId": "snowflake-stack",
+    "songTitle": "Snowflake Stack"
+  },
+  {
+    "id": "track-24",
+    "releaseDate": "2026-12-22",
+    "album": "God or Gremlin",
+    "title": "Christmas Movies",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6b1ZdjI1TABwLN2N2ysvS19BV7uI6uIyqI8_tZA1DNQh7E5ug-yiHlRg9wvF_Gj8n5zdOyKyydWXjrNfY8iZuaV7BA_UX-QXEXGyL9YwEiOJfIbLupcGvGZkQ4CL9grK0WfU24N47j9xA3WtweXraY_nGsrir4TNtZbWlveO3_XFXePUBxX3uLB3lGZs/s320/Holiday%20movie%20showdown_%20cozy%20vs%20chaos.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776029308/God_Or_Gremlin__Holiday_Movies_Edition_cdiidx.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-movies-edition.html",
+    "explicit": false,
+    "row": 24,
+    "songId": "track-24",
+    "songTitle": "Christmas Movies"
+  },
+  {
+    "id": "track-25",
+    "releaseDate": "2026-12-23",
+    "album": "Christmas With the Gremlins",
+    "title": "Why is it Blue? (Eggnog Song)",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLi7OJd85hJ_VNvBsdG-DAGj9nByT0cYGyQ62D-EwH0H4VTPX1mX7Z7BQLa8iyNsPAKGteoyYXgzL7ZteefMWiW-mpvGb5HsNkMPrn7rWqMrJVIkrQlrikbOP_HmeRFTgHH7G9PW-LoRfB7RPyMfOE9TdijBvjhIZ24d3MxZSswV9GWAW1iHWMx8dSTT8/s1254/why%20is%20it%20blue%20eggnog%20song%20cover%20w%20warning.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776555236/Why_Is_It_Blue__The_Eggnog_Song_hc5qif.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/why-is-it-blue-eggnog-song.html",
+    "explicit": false,
+    "row": 25,
+    "songId": "track-25",
+    "songTitle": "Why is it Blue? (Eggnog Song)"
+  },
+  {
+    "id": "track-26",
+    "releaseDate": "2026-12-24",
+    "album": "God or Gremlin",
+    "title": "Christmas Eve Edition",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeuJ2MI2eEIuWrTRQDmQ8d395uviaXZW0MhiseXDUdaLlCb2eMANhWVqfMZNzRHE5g7u1PQWDyZDebrfuT6bf2oj8u0RbtBG69Bnef1Xhu-s0vMDbO_E1z_hsTHwVc3uMLa_TcAR8W0QPPaBItMeaTeVcTuY4eH0abjSWuIV-MT1hZnw/s1600/God%20or%20gremlin_%20Christmas%20chaos%20edition.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776075180/God_Or_Gremlin__Christmas_Eve_Edition_1_xnu97l.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-christmas-eve-edition.html",
+    "explicit": false,
+    "row": 26,
+    "songId": "track-26",
+    "songTitle": "Christmas Eve Edition"
+  },
+  {
+    "id": "track-27",
+    "releaseDate": "2026-12-25",
+    "album": "Christmas With the Gremlins",
+    "title": "Gremlin Christmas Morning",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxhuD840xlkJvfolOl3cta0-ItoqyvDnq1gbXMJJNWligG6RV_gJRL9yZyK15MRkRpRW88cgXd5qkkm88F5L8lpankgNqocAQQusneuqeVIm0kM01zMXziWn0dQtAfZjOMnvEf3Rd1pCvJQdHQFQL6xHupIOv7P4Bj0zLImB038DKVdIiGtQgaNTIHVo4/s320/Gremlin%20Christmas%20Morning%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783174903/Gremlin_Christmas_Morning_qfrwq8.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/gremlin-christmas-morning.html",
+    "explicit": false,
+    "row": 27,
+    "songId": "track-27",
+    "songTitle": "Gremlin Christmas Morning"
+  },
+  {
+    "id": "track-28",
+    "releaseDate": "2026-12-25",
+    "album": "Christmas With the Gremlins",
+    "title": "More than the Present",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPPHh35XmaFUVjB_833KYXpTUpJfVb93g9lo0voOuCnuxTePbUo3-g5uDRvYAKHB98-bXvhL6pB9fqE2JHd9cuagd8TD8RgerBhZs5WbFRNKIEVGJ685sFuf6hbCDgru7qP8NNaAP9VDe8-3yiIxoi5x1s-OvFiBi7YjGIgMxCEJ90XONL1DfhXX6ffSY/s320/More%20Than%20the%20Present%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1793506014/More_Than_the_Present_F_yxl2mh.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/more-than-present.html",
+    "explicit": false,
+    "row": 28,
+    "songId": "more-than-the-present",
+    "songTitle": "More Than the Present"
+  },
+  {
+    "id": "track-29",
+    "releaseDate": "2026-12-25",
+    "album": "Christmas With the Gremlins",
+    "title": "More than the Present [Duo]",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCzkRNI1soQ2xuMFY5f6ar4nOtDfiyBlWM6KfQhlnBtXB1-x6AkxagEdp7iUwBtt2CRvHBLfVA7raFZbILknprD3Z3u9FkuZrB42XL-qZLED3uV-ET7vgpuDXStLo9DUKdxoyxU5nQi6QKZM_NjC0e3iwZAxnv_MSXzNl4o2_CY8kguU6SR51UhTOd3Os/s320/More%20Than%20the%20Present%20Duo.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_votmrv.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/more-than-present.html",
+    "explicit": false,
+    "row": 29,
+    "songId": "more-than-the-present",
+    "songTitle": "More Than the Present"
+  },
+  {
+    "id": "track-30",
+    "releaseDate": "2026-12-25",
+    "album": "Christmas With the Gremlins",
+    "title": "More than the Present {Explicit Lyrics}",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPPHh35XmaFUVjB_833KYXpTUpJfVb93g9lo0voOuCnuxTePbUo3-g5uDRvYAKHB98-bXvhL6pB9fqE2JHd9cuagd8TD8RgerBhZs5WbFRNKIEVGJ685sFuf6hbCDgru7qP8NNaAP9VDe8-3yiIxoi5x1s-OvFiBi7YjGIgMxCEJ90XONL1DfhXX6ffSY/s320/More%20Than%20the%20Present%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1793506014/More_Than_the_Present_F_Explicit_coo5vg.mp3",
+    "gremtv": "https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_explicit_ekuw3n.mp3",
+    "explicit": true,
+    "row": 30,
+    "songId": "more-than-the-present",
+    "songTitle": "More Than the Present"
+  },
+  {
+    "id": "track-31",
+    "releaseDate": "2026-12-25",
+    "album": "Christmas With the Gremlins",
+    "title": "More than the Present Duo Explicit",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCzkRNI1soQ2xuMFY5f6ar4nOtDfiyBlWM6KfQhlnBtXB1-x6AkxagEdp7iUwBtt2CRvHBLfVA7raFZbILknprD3Z3u9FkuZrB42XL-qZLED3uV-ET7vgpuDXStLo9DUKdxoyxU5nQi6QKZM_NjC0e3iwZAxnv_MSXzNl4o2_CY8kguU6SR51UhTOd3Os/s320/More%20Than%20the%20Present%20Duo.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783277487/More_Than_the_Present_explicit_ekuw3n.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/more-than-present.html",
+    "explicit": true,
+    "row": 31,
+    "songId": "more-than-the-present",
+    "songTitle": "More Than the Present"
+  },
+  {
+    "id": "track-32",
+    "releaseDate": "2026-12-26",
+    "album": "Christmas With the Gremlins",
+    "title": "Candy Cane Hockey",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBxDC2PQWizhsjLn4xK3nfXmC9jct9f2BDBJehKJGQgcFvXcELb4QpH0KhaxKpBxYLP8sCHlbib660XxSD_D9r7mSSz9wSXuWcYYKYNGZ7HOcCc6M2gc1n8CW_uKcxeL6j450rsx49OxJH_etXUnhMg4dA2J_Yk1bLeI_R4XF3NPSdwRJohDrOgEEqsoc/s320/Candy%20Cane%20Hockey%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783454425/Candy_Cane_Hockey_Published_cgf5pn.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/candy-cane-hockey.html",
+    "explicit": false,
+    "row": 32,
+    "songId": "track-32",
+    "songTitle": "Candy Cane Hockey"
+  },
+  {
+    "id": "track-33",
+    "releaseDate": "2026-12-27",
+    "album": "Christmas With the Gremlins",
+    "title": "Snowball Fight",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjj5W8nHNSA1ckV9EJkkf6NcDSYDr2SoLFvoZaT7e5LCjb-J6_JLFHJZzg3pnUB1s8-rMVvC9jeaouZecZ7fZM0k4J533qNBEJ-BQXWI_kYO91T5T8tGGLP8yaLDZEsJjyKZczaAjfAnV97EjXpxkg8739eBjVafAAy71tIsTyq83OMpb9lsGBwKhnKLpc/s320/snowball%20fight%20spotify%20cover.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783009805/Snow_Ball_Fight_bko1pq.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/02/youtube-video-player.html",
+    "explicit": false,
+    "row": 33,
+    "songId": "track-33",
+    "songTitle": "Snowball Fight"
+  },
+  {
+    "id": "track-34",
+    "releaseDate": "2026-12-28",
+    "album": "God or Gremlin",
+    "title": "It's Alright",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn5RGmIxnE54RgKDkmkj05smUaqHZhFaeF7VQ3u_y2wkNGQb6rdQ9k48yz1qsoOx6cu8pl9jf2rbD7gDB9pCEsNcyzEM7jfr00UONeZbtSowZiCrw8GduuAU3WMOzqNBU-fz2ObJNq0HK9_H6yyraAtZYm993Qp87ImhPeMfv3UbhL6IAlkou81qKWcgc/s320/Grumpy%20gremlin%E2%80%99s%20holiday%20struggle.pn",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1776036018/God_Or_Gremlin__It_s_Alright_p9h1k0.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/04/god-or-gremlin-its-alright.html",
+    "explicit": false,
+    "row": 34,
+    "songId": "track-34",
+    "songTitle": "It's Alright"
+  },
+  {
+    "id": "track-35",
+    "releaseDate": "2026-12-29",
+    "album": "Small Offerings",
+    "title": "I Like You More Than Bacon (Bacon Day)",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyWYkRzgyDEEuHL-RYe_oOt3utBudnc9rCls7LXGooo9Fo43DwV1ngoGB11bSNasyjZYJxayEsdXp0EaPoBiM46LsDU5HkP7KTYiLOCfD0jSfMvWN23laxH6HmAgbJkHwByzmit0bbQIWvCKOYa4ZzxqMxwRe-k9FNOE2wsDwMURXRKLNY4My7OzHPWoA/s742/I%20like%20you%20more%20than%20bacon.PNG",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1778318424/I_Like_You_More_Than_Bacon_F_pb7g8y.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/05/i-like-you-more-than-bacon.html",
+    "explicit": false,
+    "row": 35,
+    "songId": "more-than-bacon",
+    "songTitle": "I Like You More Than Bacon"
+  },
+  {
+    "id": "track-36",
+    "releaseDate": "2026-12-29",
+    "album": "Small Offerings",
+    "title": "I like you More Than Bacon (Bacon Day)",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyWYkRzgyDEEuHL-RYe_oOt3utBudnc9rCls7LXGooo9Fo43DwV1ngoGB11bSNasyjZYJxayEsdXp0EaPoBiM46LsDU5HkP7KTYiLOCfD0jSfMvWN23laxH6HmAgbJkHwByzmit0bbQIWvCKOYa4ZzxqMxwRe-k9FNOE2wsDwMURXRKLNY4My7OzHPWoA/s742/I%20like%20you%20more%20than%20bacon.PNG",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1778318426/I_Like_You_More_Than_Bacon_M_vkfbri.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/05/i-like-you-more-than-bacon.html",
+    "explicit": false,
+    "row": 36,
+    "songId": "more-than-bacon",
+    "songTitle": "I Like You More Than Bacon"
+  },
+  {
+    "id": "track-37",
+    "releaseDate": "2026-12-30",
+    "album": "Christmas With the Gremlins",
+    "title": "It's Blursday Relax",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmONDlm06yojyaRK77Vb8zQc2HDxglTCnSPDO1wLhNUX9sb3ToAxtK_0pJknyKg4NQ-ePvRmsZJeOUuCw-XFU60K4sAViNsgE41NgjwNQ5O9ZAy1Kvmx207nP7B2BuU_3A91ob0tyj5Luwn7iHh37WkjCzS97S3CkVsBTZ5zaFAXNVEhZ2Z9Y1x049Bnc/s1254/Blursday%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783212736/It_s_Blursday_Relax_gumkhz.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/its-blursday-relax.html",
+    "explicit": false,
+    "row": 37,
+    "songId": "track-37",
+    "songTitle": "It's Blursday Relax"
+  },
+  {
+    "id": "track-38",
+    "releaseDate": "2026-12-31",
+    "album": "Christmas With the Gremlins",
+    "title": "Happy New Year",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYF8hS7FSe2fz3Tq3EQVfRT4DrcpCPOHD6yppzf2iudXIWjwD2IgRs6j7UN8OUxt6zc3aYVLI8QVzEzzPv_uHJv8pHTqC6L-gIR07PgFzA2_bs6RHJ1rDFZ6s-G_L_7zow9PDkJrr2PEDgJUysfCIMKem6DdJeuc6xJEUthdaDfX3XD-Wz9jkmy4CN0pY/s1254/Happy%20New%20Year%20from%20the%20Gremlins!.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1782942778/Happy_New_Year_from_the_Gremlins_ftvvxh.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2025/12/happy-new-year-from-gremlins.html",
+    "explicit": false,
+    "row": 38,
+    "songId": "track-38",
+    "songTitle": "Happy New Year"
+  },
+  {
+    "id": "track-39",
+    "releaseDate": "2027-01-01",
+    "album": "Christmas With the Gremlins",
+    "title": "Hangover Song",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg81JnweArbmptusBviwYgfBSO2j4siESLNFL320wipsHNlNZWkbMxUYx9RB2Abin9618t3PdVpswbRNuvvSKJuGci8O7C4Bq7Lm0XXQOduoPd_cAGf6E00MxZp6sEBeSJo0uR33Xp52GWRKGixIpJwAhrGJKJMVAvFKemikyQWaKYIj-unwdkEnXhieyo/s320/The%20Hangover.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783173746/Hangover_Song_lbcck9.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/12/the-hangover-song.html",
+    "explicit": false,
+    "row": 39,
+    "songId": "track-39",
+    "songTitle": "Hangover Song"
+  },
+  {
+    "id": "track-40",
+    "releaseDate": "2027-01-02",
+    "album": "Sofa Spud Soundtrack",
+    "title": "Ode to a Personal Trainer",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcJ4bmewH7bIZdWitQbGrg5xE1ek2ZeUm0WcKXvkIO06BL1mzJ-suuM9Yc5asnFVbi6n8grRo0Qu_t8Yvq1bBNHJGhdKxo7Rrf_3LKE9KTwsGklAgJzq4d2ggTUUKKnWSh2aseU6LApZRRrrUDpIaWd4meUEB-NSQ06gDG0iNY1uB3TicjrQryV21gFT4/s320/ode%20to%20the%20personal%20trainer.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783015087/Ode_to_the_Personal_Trainer_hzkyta.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/ode-to-personal-trainer.html",
+    "explicit": false,
+    "row": 40,
+    "songId": "track-40",
+    "songTitle": "Ode to a Personal Trainer"
+  },
+  {
+    "id": "track-41",
+    "releaseDate": "2027-01-03",
+    "album": "Sofa Spud Soundtrack",
+    "title": "Nuts to Resolutions",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoruIPucZKtbLZWrLPXDDBbw9r2gjdyIdtKvK1X0eA46eAIfFSTy7t3G62ZtJMrl4ojE9yCTGD-vgQYr9P4yPltQT-2m1vs3fs-89UAM-ToEQyhND_dKkpDjRzepK9JSOPAHkc3uoXESzWjTSu1bg5vCio-xgMZfdHC7H41VzQznNMc3QozOSSvExe0KU/s1254/nuts%20to%20resolutions%2011.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785513040/Nuts_to_Resolutions_Radio_Edit_bg6jm3.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/nuts-to-resolutions.html",
+    "explicit": false,
+    "row": 41,
+    "songId": "nuts-to-resolutions",
+    "songTitle": "Nuts to Resolutions"
+  },
+  {
+    "id": "track-42",
+    "releaseDate": "2027-01-03",
+    "album": "Sofa Spud Soundtrack",
+    "title": "Nuts to Resolutions - Explicit",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiop49VJfhkPspy_REDXnkPNedhsW0yjYo8rDFiP2hbvsG76vmR_ZafBB2Iy1M-2bD549gYDwpeCy4NvlT9eE0ArZ0UkVt8hio59jHKaeHwrbVx2ug_b2-WtPZVEF0aa0V7wMmtHNrinx2Pq5ewbFyrgel_TpEqLQ8JSCIa8JRi82-_hRREaO_x8OVawgo/s320/nuts%20to%20resolutions%2011%20pael.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785512960/Nuts_to_Resolutions_-_explicit_eb4nfg.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/nuts-to-resolutions-explicit.html",
+    "explicit": true,
+    "row": 42,
+    "songId": "nuts-to-resolutions",
+    "songTitle": "Nuts to Resolutions"
+  },
+  {
+    "id": "track-43",
+    "releaseDate": "2027-01-04",
+    "album": "(Theme Songs)",
+    "title": "GAMBIT THEME - Trivia Day - Gremlin Gambit Deck of Dumbassery",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgc2chX9Zerv43r18MqzSAiq24yDpSEfz5vBYnedxNuqm1vCaXpGDeyBpjEou5CfX4mGDXZ1lSU1G43r_4HYpY7JB_Oi2W_xB2edSM9eIZGmGOEYs9gWkjI-CrTzKKXwsbGM8rf7uwTPz78ihI5Wg86FkXcm0O5xG175joSzPGHq5HKUg/s1600/Gremlin%20Gambit%20(2).png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1783710869/Gremlin_Gambit_Opening_jnayyu.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/gremlin-gambit.html",
+    "explicit": false,
+    "row": 43,
+    "songId": "track-43",
+    "songTitle": "GAMBIT THEME - Trivia Day - Gremlin Gambit Deck of Dumbassery"
+  },
+  {
+    "id": "track-44",
+    "releaseDate": "2027-01-05",
+    "album": "Sofa Spud Soundtrack",
+    "title": "KETO? Whipped Cream From a Can",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8EhhakGBGVVzliKfjUaFz83ap0lEg6-9VL30_66WJqmsLjFSTQqeAy93S-hdVCkO9mw0wevZM2sTUgNQSwRACz5t24JYE9ep7rZ9EgfSIBOS-soJAzgH5JdxNmNVEq8Q-aSQ5lGoLK3Pd0Koi5Y3dCdbXJ7cnjjbbTDwKA0YSZp31UFrNGWhieX-XpHo/s320/Keto%2011%20a.png",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785514066/Keto_Kitchen_Emergency_Tactical_Operations_a43con.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/07/keto.html",
+    "explicit": false,
+    "row": 44,
+    "songId": "track-44",
+    "songTitle": "KETO? Whipped Cream From a Can"
+  },
+  {
+    "id": "track-45",
+    "releaseDate": "2027-01-06",
+    "album": "Christmas With the Gremlins",
+    "title": "Gremlin Take Down the Tree. Or Not.",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCx-6Gei6uhBdMU_gaTE7U2NqtnspHAXy076h9-JCHCL25-7nJQdbht53PoxXyeUzjzNOY-KBtys10arzd274ZscZHsGIynO1xdTh1boeeR19PMJ_WCBvbdZEdgHA6dT4g8Wn-AqyDTkVdRo3QXzpL3H4fK_cKg0Mzox71UrzAcNLh5Q/s1600/image1785654381",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785657781/TAKE_DOWN_THE_TREE_OR_DON_T_ekiwir.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/08/take-down-tree-or-not.html",
+    "explicit": false,
+    "row": 45,
+    "songId": "take-down-the-tree",
+    "songTitle": "Gremlin Take Down the Tree"
+  },
+  {
+    "id": "track-46",
+    "releaseDate": "2027-01-06",
+    "album": "Christmas With the Gremlins",
+    "title": "Gremlin Take Down the Tree. Or Not. (Anthemic Cinematic Version)",
+    "artwork": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdnZ38iU-ZZEmAlAExp7gykb2uHWgYow5KhD5qmrpDct7gbv3rJEM9byWRSyla7BYIxfCy_Yt9YHgnfcxOI1ncfQLb7-N1Fzb0Gw5-ka-PRMbJa5L1SYNN7dWVFp-IAHb9CPKeuLuQZTcQtQ3bzHMwUVrBW0jY930jSZ6I4IbZmLqByg/s1600/image1785657561",
+    "audio": "https://res.cloudinary.com/dktoygra7/video/upload/v1785657777/Take_Down_the_Tree_Anthemic_Cinematic_Mix_mo5d60.mp3",
+    "gremtv": "https://gremtv.blogspot.com/2026/08/take-down-tree-or-not.html",
+    "explicit": false,
+    "row": 46,
+    "songId": "take-down-the-tree",
+    "songTitle": "Gremlin Take Down the Tree"
+  }
+];;
 const audio = document.getElementById('audio');
 const $ = id => document.getElementById(id);
 let explicitEnabled = false;
@@ -250,6 +836,7 @@ $('confirmSkip').addEventListener('click',()=>{
   explicitEnabled=false; updateExplicitButton(); setStatus('Clean versions only');
   if(current)lastFourSongIds.push(current.songId);
   lastFourSongIds=lastFourSongIds.slice(-4);
+  current=null;
   shuffleNext();
 });
 $('cancelSkip').addEventListener('click',()=>{
