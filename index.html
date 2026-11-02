@@ -19,12 +19,12 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .layer.small-display{z-index:4}
 .layer.badge{z-index:5}
 .layer.emblem{z-index:5}
-.screen-main{position:absolute;z-index:2;left:22%;top:25%;width:56%;height:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2% 4%;color:#34251a;overflow:hidden}
+.screen-main{position:absolute;z-index:2;left:22%;top:23%;width:56%;height:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2% 4%;color:#34251a;overflow:hidden}
 .screen-main .eyebrow{font:700 clamp(8px,1vw,12px)/1.2 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#80603a}
 .screen-main .song{font:bold clamp(14px,2.4vw,28px)/1.1 Georgia,serif;margin:5px 0 3px;max-width:100%}
 .screen-main .album{font:clamp(9px,1.15vw,14px)/1.25 Arial,sans-serif;color:#705638}
 .screen-main .status{font:700 clamp(8px,1vw,12px)/1.2 Arial,sans-serif;margin-top:8px;color:#8b3827;letter-spacing:.12em}
-.small-readout{position:absolute;z-index:6;left:27%;top:60%;width:46%;height:7.6%;display:flex;align-items:center;justify-content:space-between;padding:0 2%;color:#f4dba7;font:700 clamp(7px,.9vw,12px) Arial,sans-serif;text-shadow:0 1px 3px #000;pointer-events:none}
+.small-readout{position:absolute;z-index:6;left:27%;top:65.5%;width:46%;height:7.6%;display:flex;align-items:center;justify-content:space-between;padding:0 2%;color:#f4dba7;font:700 clamp(7px,.9vw,12px) Arial,sans-serif;text-shadow:0 1px 3px #000;pointer-events:none}
 .small-readout .track-time{white-space:nowrap}
 .progress{position:absolute;z-index:7;left:27.5%;top:72.1%;width:45%;height:3px;background:#5d4932;border-radius:8px;overflow:hidden}
 .progress span{display:block;height:100%;width:0;background:#e4b75f}
@@ -35,7 +35,7 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .badge-link{position:absolute;z-index:12;display:block;background:transparent;border-radius:50%;cursor:pointer}
 .badge-link.spotify{left:75.8%;top:65.9%;width:6.5%;height:9.2%}
 .badge-link.gremtv{left:16.2%;top:65.7%;width:6.5%;height:9.2%}
-.explicit-control{position:absolute;z-index:15;left:43%;top:52%;display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #8b6738;border-radius:20px;background:#21170ee8;color:#f1d49d;font:700 clamp(8px,.9vw,11px) Arial,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 2px 6px #0008}
+.explicit-control{position:absolute;z-index:15;left:50%;top:54%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #8b6738;border-radius:20px;background:#21170ee8;color:#f1d49d;font:700 clamp(8px,.9vw,11px) Arial,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 2px 6px #0008}
 .led{width:10px;height:10px;border-radius:50%;background:#4b4b42;border:1px solid #a18c68;box-shadow:inset 0 0 3px #000}
 .explicit-control[aria-pressed="true"] .led{background:#ffb52e;box-shadow:0 0 5px #ffb52e,0 0 12px #ff9d22}
 .below{max-width:940px;margin:8px auto 0}
@@ -49,16 +49,29 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .catalogue{margin:26px auto 0;max-width:1000px}
 .catalogue h2{font-size:25px;color:#e5c17e;text-align:center;margin:0 0 5px}
 .catalogue .sub{text-align:center;color:#b9a78b;font:13px Arial,sans-serif;margin:0 0 16px}
-.track-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.track{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center;background:linear-gradient(135deg,#34261b,#1e1711);border:1px solid #60492f;border-radius:10px;padding:9px;min-width:0}
-.track.locked{filter:grayscale(1);opacity:.55}
-.track img{width:74px;height:74px;object-fit:cover;border-radius:6px;background:#493a2a}
-.track .name{font-weight:700;font-size:14px;line-height:1.2}
-.track .meta{font:11px/1.4 Arial,sans-serif;color:#c0ad8c;margin-top:4px}
-.track .play-track{border:0;background:none;color:#f3d18e;text-align:left;padding:0;cursor:pointer;font:inherit}
-.track .play-track:disabled{cursor:not-allowed;color:#a99c86}
-.track .tag{display:inline-block;font:9px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;border:1px solid #84643c;border-radius:10px;padding:2px 5px;margin-top:5px;color:#e2c18b}
-.track .tag.explicit{border-color:#a14c3d;color:#f1a18e}
+.track-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;align-items:start}
+.gift-date-card{min-width:0;background:linear-gradient(145deg,#34261b,#1e1711);border:1px solid #705331;border-radius:12px;padding:9px;box-shadow:0 5px 14px #0005}
+.gift-top{display:flex;flex-direction:column;align-items:center;gap:7px}
+.gift-parcel{position:relative;width:100%;aspect-ratio:1.18/1;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate;box-shadow:inset 0 0 0 2px #ffffff35,0 4px 9px #0008}
+.gift-parcel:before{content:"";position:absolute;z-index:1;left:43%;top:0;width:14%;height:100%;background:var(--ribbon);box-shadow:0 0 0 1px #0002}
+.gift-parcel:after{content:"";position:absolute;z-index:1;left:0;top:42%;width:100%;height:16%;background:var(--ribbon);box-shadow:0 0 0 1px #0002}
+.gift-pattern{position:absolute;inset:0;z-index:0;opacity:.8}
+.gift-number{position:relative;z-index:3;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff1d9;border:3px solid #9a5b27;color:#4a2416;font:bold 23px Georgia,serif;box-shadow:0 2px 7px #0008}
+.gift-bow{position:absolute;z-index:4;top:5%;left:50%;transform:translateX(-50%);width:42px;height:19px}
+.gift-bow:before,.gift-bow:after{content:"";position:absolute;top:0;width:19px;height:14px;border:4px solid var(--ribbon);border-radius:90% 90% 15% 90%;background:transparent}
+.gift-bow:before{right:50%;transform:rotate(22deg)}
+.gift-bow:after{left:50%;transform:scaleX(-1) rotate(22deg)}
+.gift-date{font:700 12px Arial,sans-serif;color:#f1d39c;text-align:center}
+.gift-state{font:10px Arial,sans-serif;color:#bda987;text-align:center;text-transform:uppercase;letter-spacing:.1em}
+.gift-open-button{width:100%;border:0;background:none;padding:0;cursor:pointer}
+.gift-open-button:disabled{cursor:default}
+.gift-tracks{display:grid;gap:7px;margin-top:10px}
+.gift-track{display:grid;grid-template-columns:44px minmax(0,1fr);gap:7px;align-items:center;padding:6px;background:#17110de0;border:1px solid #61482c;border-radius:7px;min-width:0}
+.gift-track img{width:44px;height:44px;object-fit:cover;border-radius:4px;background:#493a2a}
+.gift-track .play-track{display:block;width:100%;border:0;background:none;color:#f3d18e;text-align:left;padding:0;cursor:pointer;font:700 11px/1.2 Georgia,serif;overflow-wrap:anywhere}
+.gift-track .play-track:disabled{cursor:not-allowed;color:#a99c86}
+.gift-track .tag{display:inline-block;font:8px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;border:1px solid #84643c;border-radius:10px;padding:2px 5px;margin-top:4px;color:#e2c18b}
+.gift-track .tag.explicit{border-color:#a14c3d;color:#f1a18e}
 .modal-backdrop{position:fixed;inset:0;z-index:100;background:#000b;display:none;align-items:center;justify-content:center;padding:18px}
 .modal-backdrop.show{display:flex}
 .modal{max-width:420px;width:100%;background:linear-gradient(#49331f,#20160f);border:1px solid #bd9253;border-radius:14px;padding:22px;text-align:center;box-shadow:0 15px 60px #000}
@@ -66,10 +79,24 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
 .modal p{color:#e5d2b1;margin:0 0 18px}
 .modal .choices{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .footer{text-align:center;color:#8f8069;font:11px Arial,sans-serif;margin:25px 0 0}
-@media(max-width:600px){body{padding:12px 8px 30px}.screen-main .song{font-size:clamp(12px,3vw,20px)}.screen-main .status{margin-top:3px}.explicit-control{padding:3px 6px;gap:4px}.led{width:7px;height:7px}.track-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}.track{grid-template-columns:55px 1fr;gap:7px;padding:7px}.track img{width:55px;height:55px}.track .name{font-size:12px}}
+@media(max-width:850px){.track-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}\n@media(max-width:600px){body{padding:12px 8px 30px}.screen-main .song{font-size:clamp(12px,3vw,20px)}.screen-main .status{margin-top:3px}.explicit-control{padding:3px 6px;gap:4px}.led{width:7px;height:7px}.track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.track{grid-template-columns:55px 1fr;gap:7px;padding:7px}.track img{width:55px;height:55px}.track .name{font-size:12px}}
+
+/* Full-page radio presentation and persistent return sign */
+body{min-height:100vh;min-height:100svh;padding:26px 18px 54px}
+.wrap{width:100%;max-width:1440px}
+.radio-shell{max-width: min(1200px, 100%)}
+.intro{padding:0 112px}
+.exit-home{position:fixed;z-index:250;top:14px;right:16px;display:block;width:clamp(62px,7vw,104px);line-height:0;filter:drop-shadow(0 4px 8px #000b);transition:transform .16s ease,filter .16s ease}
+.exit-home img{display:block;width:100%;height:auto}
+.exit-home:hover{transform:scale(1.06);filter:drop-shadow(0 6px 12px #000)}
+.exit-home:focus-visible{outline:3px solid #ffe6a0;outline-offset:5px;border-radius:8px}
+@media(max-width:600px){body{padding:88px 8px 30px}.intro{padding:0 8px}.exit-home{top:10px;right:10px;width:64px}}
 </style>
 </head>
 <body>
+<a class="exit-home" href="https://gremlinwranglergrotto.blogspot.com/" aria-label="Exit radio and return to the Gremlin Grotto blog" title="Back to the Grotto">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNMfUIz5K_4DJqfWI2bNLQfAVwTtXN611rRv9dpXZfVVyGyP9U5Ezk9s1C07Nez4w5IlJAjv-9VgWFCO7BGzh_Kn0PLRwmjW5fhe63Kij576EMAH-n0r-JjGcBSdEFns9F4yGKz_q1pfk4mWeBuRNgk91R-QctDmPFkLErD9dw0Prffw/s1600/TGW%20Exit%20crop.png" alt="Exit to the Gremlin Grotto blog">
+</a>
 <div class="wrap">
   <header class="intro">
     <h1>Gremlin Grotto Radio</h1>
@@ -101,8 +128,8 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
     <img class="layer emblem" src="assets/wrangler-emblem.png" alt="">
   </section>
 
- <div class="below">
-    <div class="transport-note">A quite frankly ludicrous number of seaonal songs, one day at a time!</div>
+  <div class="below">
+    <div class="transport-note">A quite frankly ludicrous number of seasonal songs, one day at a time!</div>
     <div class="toolbar">
       <button class="action" id="shuffleBtn">✦ SHUFFLE ✦</button>
       <button class="action" id="stopBtn">STOP</button>
@@ -118,7 +145,6 @@ body{margin:0;background:radial-gradient(ellipse at top,#3b2b1d 0,#17120e 70%);c
   </section>
   <p class="footer">Gremlin Grotto Radio • Unlocks use Europe/Dublin local time • Audio hosted by Cloudinary</p>
 </div>
-
 
 <div class="modal-backdrop" id="explicitModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
@@ -758,19 +784,62 @@ function availableGroups(){
   return songGroups().filter(g=>eligibleVariants(g.id).length>0);
 }
 function setStatus(text){$('displayStatus').textContent=text.toUpperCase();$('smallStatus').textContent=text.toUpperCase();}
+const giftPalette = [
+  ["#ef315d","#ffd13d"],["#12a8a0","#f4e04d"],["#743bd1","#ff7a38"],
+  ["#ff8b20","#173b8f"],["#d72e9b","#62d94e"],["#1d9be0","#f5d12f"],
+  ["#e83d32","#25d6b5"],["#8eae20","#ed4c9b"],["#ecb72d","#4b2c9c"],
+  ["#ef5a9d","#28a7e8"],["#1d7d54","#ffcf36"],["#d8442f","#a9e6ff"]
+];
+const giftPatterns = [
+  "radial-gradient(circle at 8px 8px,#fff8 0 2px,transparent 2.5px),radial-gradient(circle at 24px 24px,#fff8 0 2px,transparent 2.5px)",
+  "repeating-linear-gradient(45deg,#fff5 0 5px,transparent 5px 13px)",
+  "repeating-linear-gradient(0deg,#fff5 0 4px,transparent 4px 13px)",
+  "radial-gradient(circle,#fff9 0 2px,transparent 2.5px)",
+  "repeating-linear-gradient(135deg,#fff5 0 3px,transparent 3px 10px)",
+  "repeating-linear-gradient(90deg,#fff4 0 7px,transparent 7px 15px)"
+];
+function dateGroups(){
+  const map=new Map();
+  TRACKS.forEach(t=>{if(!map.has(t.releaseDate))map.set(t.releaseDate,[]);map.get(t.releaseDate).push(t)});
+  return [...map.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+}
 function renderCatalogue(){
   const grid=$('trackGrid'); grid.innerHTML='';
-  TRACKS.forEach(t=>{
-    const unlocked=released(t), allowed=unlocked && (explicitEnabled || !t.explicit);
-    const card=document.createElement('article'); card.className='track'+(!unlocked?' locked':'');
-    const img=document.createElement('img'); img.loading='lazy'; img.alt=''; img.src=t.artwork || '';
-    if(!t.artwork){img.src='';img.style.background='linear-gradient(135deg,#69513a,#251b13)';}
-    const info=document.createElement('div');
-    const button=document.createElement('button'); button.className='play-track'; button.textContent=t.title; button.disabled=!allowed;
-    button.addEventListener('click',()=>playTrack(t,true));
-    const meta=document.createElement('div'); meta.className='meta'; meta.textContent=`${t.album} · ${unlocked?'Released':'Unlocks '+prettyDate(t.releaseDate)}`;
-    const tag=document.createElement('span'); tag.className='tag'+(t.explicit?' explicit':''); tag.textContent=!unlocked?'LOCKED':t.explicit?'EXPLICIT':'CLEAN';
-    info.append(button,meta,tag); card.append(img,info); grid.append(card);
+  dateGroups().forEach(([date,tracks],index)=>{
+    const unlocked=date<=irelandToday();
+    const [wrap,ribbon]=giftPalette[index%giftPalette.length];
+    const card=document.createElement('article');
+    card.className='gift-date-card'+(unlocked?' opened':' future');
+    const top=document.createElement('div'); top.className='gift-top';
+    const toggle=document.createElement('button'); toggle.className='gift-open-button'; toggle.disabled=!unlocked;
+    toggle.setAttribute('aria-label',unlocked?`Show tracks released ${prettyDate(date)}`:`Gift ${index+1}, opens ${prettyDate(date)}`);
+    const parcel=document.createElement('div'); parcel.className='gift-parcel';
+    parcel.style.backgroundColor=wrap; parcel.style.setProperty('--ribbon',ribbon);
+    const pattern=document.createElement('div'); pattern.className='gift-pattern';
+    pattern.style.backgroundImage=giftPatterns[index%giftPatterns.length];
+    pattern.style.backgroundSize=index%2===0?'32px 32px':'auto';
+    const number=document.createElement('span'); number.className='gift-number'; number.textContent=String(index+1);
+    const bow=document.createElement('span'); bow.className='gift-bow';
+    parcel.append(pattern,number,bow); toggle.append(parcel);
+    const dateLabel=document.createElement('div'); dateLabel.className='gift-date'; dateLabel.textContent=prettyDate(date);
+    const state=document.createElement('div'); state.className='gift-state'; state.textContent=unlocked?'Gift opened':'Opens at midnight';
+    top.append(toggle,dateLabel,state); card.append(top);
+    if(unlocked){
+      const list=document.createElement('div'); list.className='gift-tracks';
+      tracks.forEach(t=>{
+        const row=document.createElement('div'); row.className='gift-track';
+        const img=document.createElement('img'); img.loading='lazy'; img.alt=''; img.src=t.artwork||'';
+        if(!t.artwork)img.style.background='linear-gradient(135deg,#69513a,#251b13)';
+        const info=document.createElement('div');
+        const button=document.createElement('button'); button.className='play-track'; button.textContent=t.title;
+        button.disabled=t.explicit&&!explicitEnabled;
+        button.addEventListener('click',()=>playTrack(t,true));
+        const tag=document.createElement('span'); tag.className='tag'+(t.explicit?' explicit':''); tag.textContent=t.explicit?'EXPLICIT':'CLEAN';
+        info.append(button,tag); row.append(img,info); list.append(row);
+      });
+      card.append(list);
+    }
+    grid.append(card);
   });
 }
 function prettyDate(s){return new Date(s+'T12:00:00').toLocaleDateString('en-IE',{day:'numeric',month:'short',year:'numeric',timeZone:'Europe/Dublin'});}
@@ -837,7 +906,6 @@ $('confirmSkip').addEventListener('click',()=>{
   explicitEnabled=false; updateExplicitButton(); setStatus('Clean versions only');
   if(current)lastFourSongIds.push(current.songId);
   lastFourSongIds=lastFourSongIds.slice(-4);
-  current=null;
   shuffleNext();
 });
 $('cancelSkip').addEventListener('click',()=>{
